@@ -46,11 +46,15 @@ jobs:
         run: |
           npm install @capacitor/core@7 @capacitor/cli@7 @capacitor/android@7
 
+      - name: Remove existing Android project
+        working-directory: project
+        run: rm -rf android
+
       - name: Build web app
         working-directory: project
         run: npm run build
 
-      - name: Create Android project
+      - name: Create fresh Android project
         working-directory: project
         run: npx cap add android
 
